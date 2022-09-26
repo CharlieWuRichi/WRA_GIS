@@ -54,8 +54,7 @@ main {
 }
 main article {
   width: 420px;
-  height: 90%;
-  margin: 40px 0;
+  height: 80%;
   flex-direction: column;
 }
 main article .img_icon_container {
@@ -77,6 +76,7 @@ main article .main_content_container .main_content_label .label {
   padding: 4px 16px;
   border-radius: 8px 8px 0 0;
   color: rgb(20, 20, 20);
+  cursor: pointer;
 }
 main article .main_content_container .main_content_label .label.active {
   background-color: #036EB7;
@@ -84,7 +84,22 @@ main article .main_content_container .main_content_label .label.active {
 }
 main article .main_content_container .main_content_text {
   width: 100%;
-  flex: 1;
+  height: 300px;
+  overflow: auto;
+  display: none;
+}
+main article .main_content_container .main_content_text.active {
+  display: block;
+}
+main article .main_content_container .main_content_text::-webkit-scrollbar {
+  width: 10px;
+}
+main article .main_content_container .main_content_text::-webkit-scrollbar-thumb {
+  background: #AFDEE8;
+  border-radius: 5px;
+}
+main article .main_content_container .main_content_text::-webkit-scrollbar-thumb:hover {
+  background: #59BBCF;
 }
 main article .main_content_container .main_content_text table {
   width: 100%;

@@ -57,62 +57,83 @@ main{
 	margin: auto;
 	@extend %flex-center;
 	justify-content: space-between;
-	aside{
 
-	}
 	article{
 		width: 420px;
-		height: 90%;
-		margin: 40px 0;
+		height: 80%;
 		@extend %flex-center;
 		flex-direction: column;
+
 		.img_icon_container{
 			width: 100%;
 			margin-bottom: 40px;
 			@extend %flex-center;
 			justify-content: space-between;
 		}
+
 		.main_content_container{
 			width: 100%;
 			@extend %flex-center;
 			flex-direction: column;
 			flex: 1;
+
 			.main_content_label{
 				width: 100%;
 				@extend %flex-center;
 				justify-content: start;
 				border-bottom: #036EB7 solid 3px;
+
 				.label{
 					padding: 4px 16px;
 					border-radius: 8px 8px 0 0 ;
 					color: rgb(20,20,20);
+					cursor: pointer;
 					&.active{
 						background-color: #036EB7;
 						color: white;
 					}
 				}
-
 			}
+
 			.main_content_text{
 				width: 100%;
-				flex: 1;
+				height: 300px;
+				overflow: auto;
+				display: none;
+				&.active{
+					display: block;
+				}
+				&::-webkit-scrollbar {
+					width: 10px;
+
+				}
+				&::-webkit-scrollbar-thumb {
+					background: #AFDEE8;
+					border-radius: 5px;
+				}
+				&::-webkit-scrollbar-thumb:hover {
+					background: #59BBCF;
+				}
+
 				table{
 					width: 100%;
+
 					td{
 						border-bottom: 1px dashed #000;
 						padding: 20px 0 10px 0;
 					}
+
 					#tableDate{
 						width: 25%;
 						color: #DB518F;
 					}
+
 					#tableContent{
 						width: 75%;
 					}
-
 				}
 			}
-	}
+		}
 	}
 }
 
@@ -121,10 +142,12 @@ footer{
 	height: 100px;
 	background-color: #AFDEE8;
 	@extend %flex-center;
+
 	.footer_text_container{
 		width: 750px;
 		@extend %flex-center;
 		flex-direction: column;
+
 		p{
 			margin: 4px;
 		}

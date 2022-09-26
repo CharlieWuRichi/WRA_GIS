@@ -22,44 +22,51 @@
       </div>
     </header>
     <main>
-      <aside><img src="/assets/image/home/symbol.png" alt="" /></aside>
+      <aside><img src="assets/image/home/symbol.png" alt="" /></aside>
       <article>
         <section class="img_icon_container">
           <a href="Backend.html"
-            ><img src="/assets/image/home/gee.png" alt=""
+            ><img src="assets/image/home/gee.png" alt=""
           /></a>
           <a href="Backend.html"
-            ><img src="/assets/image/home/db.png" alt=""
+            ><img src="assets/image/home/db.png" alt=""
           /></a>
           <a href="Backend.html"
-            ><img src="/assets/image/home/photo.png" alt=""
+            ><img src="assets/image/home/photo.png" alt=""
           /></a>
           <a href="Backend.html"
-            ><img src="/assets/image/home/manual.png" alt=""
+            ><img src="assets/image/home/manual.png" alt=""
           /></a>
         </section>
         <section class="main_content_container">
           <div class="main_content_label">
-            <div class="label active">最新消息</div>
-            <div class="label">文件下載</div>
-            <div class="label">回答專區</div>
+            <div
+              class="label active"
+              id="labelNews"
+              onclick="labelActive(this)"
+            >
+              最新消息
+            </div>
+            <div class="label" id="labelDownload" onclick="labelActive(this)">
+              文件下載
+            </div>
+            <div class="label" id="labelAsk" onclick="labelActive(this)">
+              回答專區
+            </div>
           </div>
-          <div class="main_content_text">
+          <div id="labelNews" class="main_content_text active">
             <table>
-              <tbody>
-                <tr>
-                  <td id="tableDate">2014/10/10</td>
-                  <td id="tableContent">新版網頁正式上線。<br />假字假字。</td>
-                </tr>
-                <tr>
-                  <td id="tableDate">2014/10/10</td>
-                  <td id="tableContent">新版網頁正式上線。<br />假字假字。</td>
-                </tr>
-                <tr>
-                  <td id="tableDate">2014/10/10</td>
-                  <td id="tableContent">新版網頁正式上線。<br />假字假字。</td>
-                </tr>
-              </tbody>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div id="labelDownload" class="main_content_text">
+            <table>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div id="labelAsk" class="main_content_text">
+            <table>
+              <tbody></tbody>
             </table>
           </div>
         </section>
@@ -73,5 +80,6 @@
         <p>最佳解析度：1280*768以上　規劃建置：水利署　協力開發：瑞竣科技</p>
       </div>
     </footer>
+    <script src="assets/JavaScript/Home.js"></script>
   </body>
 </html>
