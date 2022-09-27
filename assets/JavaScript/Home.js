@@ -4,7 +4,6 @@ $.ajax({
   url: 'assets/json/news.json',
   data: '',
   success: function (data) {
-    console.log(data);
     renderJSON(data);
   },
 });
