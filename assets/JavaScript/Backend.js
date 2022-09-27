@@ -119,20 +119,23 @@ function showPopUp() {
   $('.popUp').css('display', 'block');
 }
 
-//
+// 新增資料
 function saveNewData() {
+  // 下拉選單資料驗證
   if ($('select[name=popUp_chart]').val() == undefined) {
     $('#popUpChartLabel').addClass('required');
   } else {
     $('#popUpChartLabel').removeClass('required');
   }
 
+  // Radio資料驗證
   if ($('input[name="show"]:checked').val() == undefined) {
     $('#popUpRadioLabel').addClass('required');
   } else {
     $('#popUpRadioLabel').removeClass('required');
   }
 
+  // 如果都有填資料，將資料 push 進原本的JSON裡面，重新 render 一次表格
   if (
     $('select[name=popUp_chart]').val() !== undefined &&
     $('input[name="show"]:checked').val() !== undefined
@@ -153,6 +156,7 @@ function saveNewData() {
   }
 }
 
+// 點擊取消時，關掉視窗；資料驗證的醒目文字也關掉
 function closePopUp() {
   $('.popUp').css('display', 'none');
   $('#popUpChartLabel').removeClass('required');
