@@ -29,7 +29,7 @@ $(function () {
   to = $('#to')
     .datepicker({
       showOn: 'button',
-      buttonImage: '../assets/image/backend/calendar.gif',
+      buttonImage: 'assets/image/backend/calendar.gif',
       buttonImageOnly: true,
       buttonText: 'Select date',
       dateFormat: 'yy/mm/dd',
