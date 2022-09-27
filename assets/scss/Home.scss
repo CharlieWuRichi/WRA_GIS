@@ -66,7 +66,7 @@ main{
 
 		.img_icon_container{
 			width: 100%;
-			margin-bottom: 40px;
+			margin-bottom: 10px;
 			@extend %flex-center;
 			justify-content: space-between;
 		}
@@ -103,14 +103,17 @@ main{
 				&.active{
 					display: block;
 				}
-				&::-webkit-scrollbar {
-					width: 10px;
 
+				&::-webkit-scrollbar {
+					width: 6px;
+					background: #e1f3f7;
 				}
+
 				&::-webkit-scrollbar-thumb {
 					background: #AFDEE8;
-					border-radius: 5px;
+					border-radius: 3px;
 				}
+
 				&::-webkit-scrollbar-thumb:hover {
 					background: #59BBCF;
 				}

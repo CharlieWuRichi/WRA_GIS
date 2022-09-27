@@ -9,7 +9,7 @@
 	"description":"新版網頁正式上線。"
 	},{
 	"date":"2022/09/27",
-	"description":"水利共享地理資訊雲系統教育訓練訂於今年10月29日（二）舉辦，地點在臺中辦公室電腦教室，上下午各一梯次，即日起可至署內網學習公告處報名。。"
+	"description":"水利共享地理資訊雲系統教育訓練訂於今年10月29日（二）舉辦，地點在臺中辦公室電腦教室，上下午各一梯次，即日起可至署內網學習公告處報名。"
 	}, {
 	"date":"2022/09/26",
 	"description":"說明說明說明。"
@@ -28,26 +28,26 @@
 	}],
 	"download": [{
 		"title":"檔案一",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	},{
 		"title":"檔案二",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	},{
 		"title":"檔案三",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	},{
 		"title":"檔案四",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	},{
 		"title":"檔案五",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	},{
 		"title":"檔案六",
-		"url":"https://www.richitech.com.tw/"
+		"url":"<a href='https://www.richitech.com.tw/'>https://www.richitech.com.tw/</a>"
 	}],
 	"ask": [{
 		"date":"2022/09/26",
-		"description":"為使署內地理資訊系統整合為一，依照「經濟部水利署及所機關地理資訊圖資管理作業規範」，水利署之GIS圖資皆由地理資訊倉儲中心收納且統一供應，因此，本系統將著重於三維（3D）圖資的技術展示並擴展相關應用，惟原有的快速定位模組以及3D地圖等服務，則由倉儲中心依提供署內各單元申請界皆使用，以強化水利署整體GIS資訊之內容與完整性。。"
+		"description":"為使署內地理資訊系統整合為一，依照「經濟部水利署及所機關地理資訊圖資管理作業規範」，水利署之GIS圖資皆由地理資訊倉儲中心收納且統一供應，因此，本系統將著重於三維（3D）圖資的技術展示並擴展相關應用，惟原有的快速定位模組以及3D地圖等服務，則由倉儲中心依提供署內各單元申請界皆使用，以強化水利署整體GIS資訊之內容與完整性。"
 	},{
 		"date":"2022/09/25",
 		"description":"釋疑釋疑釋疑釋疑釋疑釋疑。"
