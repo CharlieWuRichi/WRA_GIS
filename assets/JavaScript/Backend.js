@@ -55,7 +55,6 @@ $(function () {
 });
 
 var thisJSON;
-
 // 用ajax接外部json檔案，取得後執行renderJSON()
 $.ajax({
   dataType: 'json',
@@ -63,18 +62,18 @@ $.ajax({
   url: 'assets/json/Backend.json',
   data: '',
   success: function (data) {
-    // 資料載入再套DataTables，才不會顯示資料沒有進去
-    renderJSON(data);
-    jQueryDataTable(data);
     // 用變數把資料傳出來
     thisJSON = data;
+    // 資料載入再套DataTables，才不會顯示資料沒有進去
+    renderJSON(thisJSON);
+    jQueryDataTable();
     console.log(thisJSON);
     return thisJSON;
   },
 });
 
 // 在表格中印出資料
-function renderJSON(data) {
+function renderJSON(thisJSON) {
   var tableHTML = `
   <table id="table_id" class="compact hover">
     <thead>
@@ -88,13 +87,12 @@ function renderJSON(data) {
     <tbody id="BackendData"></tbody>
   </table>`;
   $('.table_container').append(tableHTML);
-
-  for (i = 0; i < data.length; i++) {
+  for (i = 0; i < thisJSON.length; i++) {
     var HTML = `
     <tr>
-      <td class="rowId" id=${data[i].rowId}>${i + 1}</td>
-      <td>${data[i].chartName}</td>
-      <td>${data[i].isShowName}</td>
+      <td class="rowId" id=${thisJSON[i].rowId}>${thisJSON[i].rowId}</td>
+      <td>${thisJSON[i].chartName}</td>
+      <td>${thisJSON[i].isShowName}</td>
       <td>
         <button onclick="showEditPopUp(this)">編輯</button>
         <br>
@@ -225,6 +223,13 @@ function closePopUp() {
   $('#editData').css('display', 'block');
 }
 
+// 用 Esc 關掉彈出視窗
+$(window).keydown(function (e) {
+  if (e.code == 'Escape') {
+    closePopUp();
+  }
+});
+
 // 點擊刪除時，出現確認視窗
 function deleteData(e) {
   // 如果確定刪除
@@ -242,10 +247,3 @@ function deleteData(e) {
     jQueryDataTable(thisJSON);
   }
 }
-
-// 用 Esc 關掉彈出視窗
-$(window).keydown(function (e) {
-  if (e.code == 'Escape') {
-    closePopUp();
-  }
-});
