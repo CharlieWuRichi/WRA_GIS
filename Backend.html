@@ -41,10 +41,10 @@
     <input type="text" id="to" name="to" />
     <hr />
     <br />
-    <button id="addBtn" onclick="showPopUp()">新增</button><br />
+    <button id="addBtn" onclick="showAddPopUp('add')">新增</button><br />
     <div class="table_container"></div>
     <div class="popUp" id="addData">
-      <div class="popUp_title">新增</div>
+      <div class="popUp_title" id="popUp_title"></div>
       <div class="popUp_option_container">
         <div class="popUp_option_container_up">
           <div class="popUp_label" id="popUpChartLabel">統計圖</div>
@@ -56,17 +56,24 @@
             <option value="RT_RainColumn">雨量直方圖</option>
           </select>
           <div class="popUp_label" id="popUpRadioLabel">是否顯示</div>
-          <input type="radio" name="show" value="Y" isShowName="是" /><label
-            for="html"
-            >是</label
-          >
-          <input type="radio" name="show" value="N" isShowName="否" /><label
-            for="css"
-            >否</label
-          >
+          <input
+            id="RadioYes"
+            type="radio"
+            name="show"
+            value="Y"
+            isShowName="是"
+          /><label for="html">是</label>
+          <input
+            id="RadioNo"
+            type="radio"
+            name="show"
+            value="N"
+            isShowName="否"
+          /><label for="css">否</label>
         </div>
         <div class="popUp_option_container_down">
           <button id="saveNewData" onclick="saveNewData()">存檔</button>
+          <button id="editData" onclick="editData()">存檔</button>
           <button id="closePopUp" onclick="closePopUp()">取消</button>
         </div>
       </div>
