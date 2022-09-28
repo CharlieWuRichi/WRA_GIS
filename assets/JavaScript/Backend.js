@@ -67,7 +67,6 @@ $.ajax({
     // 資料載入再套DataTables，才不會顯示資料沒有進去
     renderJSON(thisJSON);
     jQueryDataTable();
-    console.log(thisJSON);
     return thisJSON;
   },
 });
