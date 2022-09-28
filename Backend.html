@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- meta待補 -->
+    <meta
+      property="og:description"
+      content="水利署地理資訊空間圖資，後台管理頁面"
+    />
+    <meta
+      property="og:image"
+      content="https://charliewurichi.github.io/WRA_GIS/assets/image/home/og.png"
+    />
     <title>後台管理頁面</title>
     <link rel="stylesheet" href="assets/css/Backend.css" />
     <!-- jQuery -->
@@ -41,7 +48,7 @@
     <input type="text" id="to" name="to" />
     <hr />
     <br />
-    <button id="addBtn" onclick="showAddPopUp('add')">新增</button><br />
+    <button id="addBtn" onclick="showAddPopUp()">新增</button><br />
     <div class="table_container"></div>
     <div class="popUp" id="addData">
       <div class="popUp_title" id="popUp_title"></div>
@@ -62,14 +69,14 @@
             name="show"
             value="Y"
             isShowName="是"
-          /><label for="html">是</label>
+          /><label for="Y">是</label>
           <input
             id="RadioNo"
             type="radio"
             name="show"
             value="N"
             isShowName="否"
-          /><label for="css">否</label>
+          /><label for="N">否</label>
         </div>
         <div class="popUp_option_container_down">
           <button id="saveNewData" onclick="saveNewData()">存檔</button>

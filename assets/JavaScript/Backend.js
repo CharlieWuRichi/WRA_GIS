@@ -228,6 +228,13 @@ $(window).keydown(function (e) {
   if (e.code == 'Escape') {
     closePopUp();
   }
+  if (e.code == 'Enter') {
+    if ($('#popUp_title').prop('innerHTML') == '新增') {
+      saveNewData();
+    } else if ($('#popUp_title').prop('innerHTML') == '編輯') {
+      editData();
+    }
+  }
 });
 
 // 點擊刪除時，出現確認視窗
