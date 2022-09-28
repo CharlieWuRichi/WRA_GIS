@@ -76,6 +76,9 @@ main{
 			margin-bottom: 20px;
 			@extend %flex-center;
 			justify-content: space-between;
+			img{
+				cursor: not-allowed;
+			}
 		}
 
 		// 下方表格，用flex垂直排列
