@@ -92,7 +92,7 @@ function renderJSON(data) {
   for (i = 0; i < data.length; i++) {
     var HTML = `
     <tr>
-      <td class="rowId">${data[i].rowId}</td>
+      <td class="rowId" id=${data[i].rowId}>${i + 1}</td>
       <td>${data[i].chartName}</td>
       <td>${data[i].isShowName}</td>
       <td>
@@ -134,7 +134,7 @@ function showEditPopUp(e) {
   $('.popUp').css('display', 'block');
 
   // 列印出來原本的資料
-  var thisId = $(e).parent().parent().children()[0].innerHTML;
+  var thisId = $(e).parent().parent().children()[0].id;
   thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
   $('#popUpChart').val(thisObject.chartId);
   console.log(thisObject.isShow);
@@ -230,7 +230,7 @@ function deleteData(e) {
   // 如果確定刪除
   if (confirm('確定刪除該資料列') == true) {
     // 取得該筆資料的rowId
-    var thisId = $(e).parent().parent().children()[0].innerHTML;
+    var thisId = $(e).parent().parent().children()[0].id;
     // 取得該筆資料在資料中的 index（這句是網路上複製過來的）
     // 如果用原本的 id 當作 index，刪除掉資料後順序會不對
     var thisIndex = thisJSON.findIndex((thisJSON) => thisJSON.rowId === thisId);
