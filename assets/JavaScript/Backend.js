@@ -128,23 +128,6 @@ function showAddPopUp() {
   $('.popUp').css('display', 'block');
 }
 
-// 點擊編輯時，跳出視窗
-function showEditPopUp(e) {
-  $('#popUp_title').html('編輯');
-  $('#saveNewData').css('display', 'none');
-  $('.popUp').css('display', 'block');
-
-  // 列印出來原本的資料
-  thisId = $(e).parent().parent().children()[0].id;
-  thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
-  $('#popUpChart').val(thisObject.chartId);
-  if (thisObject.isShow == 'Y') {
-    $('#RadioYes').prop('checked', true);
-  } else if (thisObject.isShow == 'N') {
-    $('#RadioNo').prop('checked', true);
-  }
-}
-
 // 輸入新資料
 function saveNewData() {
   // 下拉選單資料驗證
@@ -193,6 +176,51 @@ function saveNewData() {
   }
 }
 
+// 點擊取消時，關掉視窗
+function closePopUp() {
+  $('.popUp').css('display', 'none');
+  // 關掉資料驗證的醒目文字
+  $('#popUpChartLabel').removeClass('required');
+  $('input[name="show"]Label').removeClass('required');
+  // 清空表單資料
+  $('#popUpChart').val(null);
+  $('input[name="show"]').prop('checked', false);
+  // 顯示兩個存檔紐（避免再開的時候不見）
+  $('#saveNewData').css('display', 'block');
+  $('#editData').css('display', 'block');
+}
+
+// 用鍵盤操控視窗按鈕
+$(window).keydown(function (e) {
+  if (e.code == 'Escape') {
+    closePopUp();
+  }
+  if (e.code == 'Enter') {
+    if ($('#popUp_title').prop('innerHTML') == '新增') {
+      saveNewData();
+    } else if ($('#popUp_title').prop('innerHTML') == '編輯') {
+      editData();
+    }
+  }
+});
+
+// 點擊編輯時，跳出視窗
+function showEditPopUp(e) {
+  $('#popUp_title').html('編輯');
+  $('#saveNewData').css('display', 'none');
+  $('.popUp').css('display', 'block');
+
+  // 列印出來原本的資料
+  thisId = $(e).parent().parent().children()[0].id;
+  thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
+  $('#popUpChart').val(thisObject.chartId);
+  if (thisObject.isShow == 'Y') {
+    $('#RadioYes').prop('checked', true);
+  } else if (thisObject.isShow == 'N') {
+    $('#RadioNo').prop('checked', true);
+  }
+}
+
 // 編輯資料
 function editData() {
   // 取得新資料
@@ -217,34 +245,6 @@ function editData() {
   // 關掉視窗
   closePopUp();
 }
-
-// 點擊取消時，關掉視窗
-function closePopUp() {
-  $('.popUp').css('display', 'none');
-  // 關掉資料驗證的醒目文字
-  $('#popUpChartLabel').removeClass('required');
-  $('input[name="show"]Label').removeClass('required');
-  // 清空表單資料
-  $('#popUpChart').val(null);
-  $('input[name="show"]').prop('checked', false);
-  // 顯示兩個存檔紐（避免再開的時候不見）
-  $('#saveNewData').css('display', 'block');
-  $('#editData').css('display', 'block');
-}
-
-// 用 Esc 關掉彈出視窗
-$(window).keydown(function (e) {
-  if (e.code == 'Escape') {
-    closePopUp();
-  }
-  if (e.code == 'Enter') {
-    if ($('#popUp_title').prop('innerHTML') == '新增') {
-      saveNewData();
-    } else if ($('#popUp_title').prop('innerHTML') == '編輯') {
-      editData();
-    }
-  }
-});
 
 // 點擊刪除時，出現確認視窗
 function deleteData(e) {

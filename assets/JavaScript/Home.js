@@ -3,7 +3,6 @@ $.ajax({
   dataType: 'json',
   method: 'GET',
   url: 'assets/json/main.json',
-  data: '',
   success: function (data) {
     renderJSON(data.news);
     renderJSON(data.download);
