@@ -134,7 +134,6 @@ function showEditPopUp(e) {
   var thisId = $(e).parent().parent().children()[0].id;
   thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
   $('#popUpChart').val(thisObject.chartId);
-  console.log(thisObject.isShow);
   if (thisObject.isShow == 'Y') {
     $('#RadioYes').prop('checked', true);
   } else if (thisObject.isShow == 'N') {
