@@ -1,3 +1,9 @@
+var thisJSON; // 目前頁面中處理的檔案
+var thisObject; // 目前點選的檔案（編輯、刪除按鈕用）
+var thisIndex; // 目前點選的檔案在資料中的順序
+var thisId; // 目前點選的rowId（編輯、刪除按鈕用）
+var maxId = 0; // 紀錄目前最大的id值
+
 $(function () {
   // 設定日期格式
   var dateFormat = 'yy/mm/dd',
@@ -54,7 +60,6 @@ $(function () {
   }
 });
 
-var thisJSON;
 // 用ajax接外部json檔案，取得後執行renderJSON()
 $.ajax({
   dataType: 'json',
@@ -124,14 +129,13 @@ function showAddPopUp() {
 }
 
 // 點擊編輯時，跳出視窗
-var thisObject;
 function showEditPopUp(e) {
   $('#popUp_title').html('編輯');
   $('#saveNewData').css('display', 'none');
   $('.popUp').css('display', 'block');
 
   // 列印出來原本的資料
-  var thisId = $(e).parent().parent().children()[0].id;
+  thisId = $(e).parent().parent().children()[0].id;
   thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
   $('#popUpChart').val(thisObject.chartId);
   if (thisObject.isShow == 'Y') {
@@ -162,14 +166,22 @@ function saveNewData() {
     $('#popUpChart').val() !== null &&
     $('input[name="show"]:checked').val() !== undefined
   ) {
+    // 避免id重複，找出資料中最大值的id
+    for (i = 0; i < thisJSON.length; i++) {
+      if (maxId < parseInt(thisJSON[i].rowId)) {
+        maxId = parseInt(thisJSON[i].rowId);
+      }
+    }
     var newData = {
-      rowId: (thisJSON.length + 1).toString(),
-      dataId: (thisJSON.length + 1).toString(),
+      rowId: maxId + 1,
+      dataId: maxId + 1,
       chartId: $('#popUpChart option:selected').val(),
       chartName: $('#popUpChart option:selected').text(),
       isShow: $('input[name="show"]:checked').val(),
       isShowName: $('input[name="show"]:checked').attr('isShowName'),
     };
+    // 紀錄最大值id
+    maxId++;
     // 將資料 unshift 進原本的JSON裡面
     thisJSON.unshift(newData);
     // 重新 render 一次表格
@@ -183,7 +195,6 @@ function saveNewData() {
 
 // 編輯資料
 function editData() {
-  console.log(thisObject);
   // 取得新資料
   newData = {
     rowId: thisObject.rowId,
@@ -240,10 +251,10 @@ function deleteData(e) {
   // 如果確定刪除
   if (confirm('確定刪除該資料列') == true) {
     // 取得該筆資料的rowId
-    var thisId = $(e).parent().parent().children()[0].id;
+    thisId = $(e).parent().parent().children()[0].id;
     // 取得該筆資料在資料中的 index（這句是網路上複製過來的）
     // 如果用原本的 id 當作 index，刪除掉資料後順序會不對
-    var thisIndex = thisJSON.findIndex((thisJSON) => thisJSON.rowId === thisId);
+    thisIndex = thisJSON.findIndex((thisJSON) => thisJSON.rowId === thisId);
     // 刪除該筆資料
     thisJSON.splice(thisIndex, 1);
     // 重新 render 一次表格
