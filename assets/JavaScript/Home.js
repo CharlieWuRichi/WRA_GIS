@@ -1,4 +1,4 @@
-// 用ajax接外部json檔案，取得後執行renderJSON()
+// 用 ajax 接外部 json 檔案，取得後印出資料
 $.ajax({
   dataType: 'json',
   method: 'GET',
@@ -10,7 +10,7 @@ $.ajax({
   },
 });
 
-// 在main_content_text中印出資料，預設印出前5筆資料
+// 印出資料；預設印出前 5 筆資料
 function renderJSON(thisData) {
   var num = 5;
   if (thisData.content.length < 5) {
@@ -28,7 +28,7 @@ function renderJSON(thisData) {
   }
 }
 
-// 切換標籤時，所有標籤與表格先隱藏（去掉active），再為被點擊的標籤加上active
+// 切換標籤時，所有標籤與表格先隱藏（去掉active），再為被點擊的標籤加上 active
 function labelActive(e) {
   $('.label').removeClass('active');
   $('.main_content_text').removeClass('active');

@@ -1,8 +1,8 @@
 var thisJSON; // 目前頁面中處理的檔案
 var thisObject; // 目前點選的檔案（編輯、刪除按鈕用）
 var thisIndex; // 目前點選的檔案在資料中的順序
-var thisId; // 目前點選的rowId（編輯、刪除按鈕用）
-var maxId = 0; // 紀錄目前最大的id值
+var thisId; // 目前點選的檔案的 rowId（編輯、刪除按鈕用）
+var maxId = 0; // 紀錄目前最大的 id 值
 
 $(function () {
   // 設定日期格式
@@ -10,7 +10,7 @@ $(function () {
     // 設定開始日曆
     from = $('#from')
       .datepicker({
-        // 顯示小日曆icon：顯示icon、檔案位置、不要按鈕底色、hover顯示字樣
+        // 顯示小日曆 icon：顯示 icon、檔案位置、不要按鈕底色、hover 顯示字樣
         showOn: 'button',
         buttonImage: 'assets/image/backend/calendar.gif',
         buttonImageOnly: true,
@@ -48,7 +48,7 @@ $(function () {
       from.datepicker('option', 'maxDate', getDate(this));
     });
 
-  // 不清楚這個是要做什麼（這個是從source code上複製過來的）
+  // ★★ 不清楚這個是要做什麼（這是文件上就有的）★★
   function getDate(element) {
     var date;
     try {
@@ -60,7 +60,7 @@ $(function () {
   }
 });
 
-// 用ajax接外部json檔案，取得後執行renderJSON()
+// 用 ajax 接外部 json 檔案，先印出表格後套用 dataTable 樣式
 $.ajax({
   dataType: 'json',
   method: 'GET',
@@ -69,10 +69,9 @@ $.ajax({
   success: function (data) {
     // 用變數把資料傳出來
     thisJSON = data;
-    // 資料載入再套DataTables，才不會顯示資料沒有進去
+    // 資料載入再套 DataTables，才不會顯示資料沒有進去
     renderJSON(thisJSON);
     jQueryDataTable();
-    return thisJSON;
   },
 });
 
@@ -107,7 +106,7 @@ function renderJSON(thisJSON) {
   }
 }
 
-// 套用 jQuery DataTable 樣式
+// 套用 dataTable 樣式
 function jQueryDataTable() {
   $('#table_id').DataTable({
     language: {
@@ -137,7 +136,7 @@ function saveNewData() {
     $('#popUpChartLabel').removeClass('required');
   }
 
-  // Radio資料驗證
+  // Radio 資料驗證
   if ($('input[name="show"]:checked').val() == undefined) {
     $('#popUpRadioLabel').addClass('required');
   } else {
@@ -149,7 +148,7 @@ function saveNewData() {
     $('#popUpChart').val() !== null &&
     $('input[name="show"]:checked').val() !== undefined
   ) {
-    // 避免id重複，找出資料中最大值的id
+    // 輸入資料；為了避免 id 重複，找出資料中 id 最大值
     for (i = 0; i < thisJSON.length; i++) {
       if (maxId < parseInt(thisJSON[i].rowId)) {
         maxId = parseInt(thisJSON[i].rowId);
@@ -163,9 +162,9 @@ function saveNewData() {
       isShow: $('input[name="show"]:checked').val(),
       isShowName: $('input[name="show"]:checked').attr('isShowName'),
     };
-    // 紀錄最大值id
+    // 紀錄最大值 id
     maxId++;
-    // 將資料 unshift 進原本的JSON裡面
+    // 將資料推進原本的 JSON 裡面
     thisJSON.unshift(newData);
     // 重新 render 一次表格
     $('.table_container').html('');
@@ -209,7 +208,6 @@ function showEditPopUp(e) {
   $('#popUp_title').html('編輯');
   $('#saveNewData').css('display', 'none');
   $('.popUp').css('display', 'block');
-
   // 列印出來原本的資料
   thisId = $(e).parent().parent().children()[0].id;
   thisObject = thisJSON.find((thisJSON) => thisJSON.rowId === thisId);
@@ -232,7 +230,7 @@ function editData() {
     isShow: $('input[name="show"]:checked').val(),
     isShowName: $('input[name="show"]:checked').attr('isShowName'),
   };
-  // 取得新資料再原本資料的 index
+  // 取得新資料在原本資料的 index
   thisIndex = thisJSON.findIndex(
     (newData) => newData.rowId === thisObject.rowId,
   );
@@ -250,10 +248,10 @@ function editData() {
 function deleteData(e) {
   // 如果確定刪除
   if (confirm('確定刪除該資料列') == true) {
-    // 取得該筆資料的rowId
+    // 取得該筆資料的 rowId
     thisId = $(e).parent().parent().children()[0].id;
-    // 取得該筆資料在資料中的 index（這句是網路上複製過來的）
-    // 如果用原本的 id 當作 index，刪除掉資料後順序會不對
+    // 取得該筆資料在資料中的 index
+    // 若用原本的 id 當作 index，刪除掉資料後順序會不對
     thisIndex = thisJSON.findIndex((thisJSON) => thisJSON.rowId === thisId);
     // 刪除該筆資料
     thisJSON.splice(thisIndex, 1);
