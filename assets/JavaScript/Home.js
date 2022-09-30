@@ -28,7 +28,7 @@ function renderJSON(thisJSON) {
   }
 }
 
-// 切換標籤時，所有標籤與表格先隱藏（去掉active），再為被點擊的標籤加上 active
+// 切換標籤時，所有標籤與表格先隱藏（去掉 active），再為被點擊的標籤加上 active
 function labelActive(e) {
   $('.label').removeClass('active');
   $('.main_content_text').removeClass('active');
