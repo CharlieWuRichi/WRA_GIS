@@ -11,18 +11,18 @@ $.ajax({
 });
 
 // 印出資料；預設印出前 5 筆資料
-function renderJSON(thisData) {
+function renderJSON(thisJSON) {
   var num = 5;
-  if (thisData.content.length < 5) {
-    num = thisData.content.length;
+  if (thisJSON.content.length < 5) {
+    num = thisJSON.content.length;
   }
   for (i = 0; i < num; i++) {
     var HTML = `
     <tr>
-      <td id="tableTitle">${thisData.content[i].title}</td>
-      <td id="tableDescription">${thisData.content[i].description}</td>
+      <td id="tableTitle">${thisJSON.content[i].title}</td>
+      <td id="tableDescription">${thisJSON.content[i].description}</td>
     </tr>`;
-    $('.main_content_text[id=' + thisData.id + ']')
+    $('.main_content_text[id=' + thisJSON.id + ']')
       .find('tbody')
       .append(HTML);
   }
