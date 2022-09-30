@@ -107,7 +107,7 @@ function renderJSON(thisJSON) {
   }
 }
 
-// 套用 dataTable 樣式
+// 套用 DataTable 樣式
 function jQueryDataTable() {
   $('#table_id').DataTable({
     language: {
