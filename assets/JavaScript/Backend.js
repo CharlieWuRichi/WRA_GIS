@@ -60,12 +60,11 @@ $(function () {
   }
 });
 
-// 用 ajax 接外部 json 檔案，先印出表格後套用 dataTable 樣式
+// 用 ajax 接外部 json 檔案，先印出表格後套用 DataTable 樣式
 $.ajax({
   dataType: 'json',
   method: 'GET',
   url: 'assets/json/Backend.json',
-  data: '',
   success: function (data) {
     // 用變數把資料傳出來
     thisJSON = data;
@@ -77,6 +76,7 @@ $.ajax({
 
 // 在表格中印出資料
 function renderJSON(thisJSON) {
+  // 表頭
   var tableHTML = `
   <table id="table_id" class="compact hover">
     <thead>
@@ -90,6 +90,7 @@ function renderJSON(thisJSON) {
     <tbody id="BackendData"></tbody>
   </table>`;
   $('.table_container').append(tableHTML);
+  // 表格內容
   for (i = 0; i < thisJSON.length; i++) {
     var HTML = `
     <tr>
@@ -100,7 +101,7 @@ function renderJSON(thisJSON) {
         <button onclick="showEditPopUp(this)">編輯</button>
         <br>
         <button onclick="deleteData(this)">刪除</button>
-        </td>
+      </td>
     </tr>>`;
     $('#BackendData').append(HTML);
   }
@@ -135,14 +136,12 @@ function saveNewData() {
   } else {
     $('#popUpChartLabel').removeClass('required');
   }
-
   // Radio 資料驗證
   if ($('input[name="show"]:checked').val() == undefined) {
     $('#popUpRadioLabel').addClass('required');
   } else {
     $('#popUpRadioLabel').removeClass('required');
   }
-
   // 如果都有填資料，執行以下動作
   if (
     $('#popUpChart').val() !== null &&
@@ -166,7 +165,7 @@ function saveNewData() {
     maxId++;
     // 將資料推進原本的 JSON 裡面
     thisJSON.unshift(newData);
-    // 重新 render 一次表格
+    // 重新渲染表格
     $('.table_container').html('');
     renderJSON(thisJSON);
     jQueryDataTable(thisJSON);
@@ -236,7 +235,7 @@ function editData() {
   );
   // 更換新資料
   thisJSON.splice(thisIndex, 1, newData);
-  // 重新 render 一次表格
+  // 重新渲染表格
   $('.table_container').html('');
   renderJSON(thisJSON);
   jQueryDataTable(thisJSON);
@@ -255,7 +254,7 @@ function deleteData(e) {
     thisIndex = thisJSON.findIndex((thisJSON) => thisJSON.rowId === thisId);
     // 刪除該筆資料
     thisJSON.splice(thisIndex, 1);
-    // 重新 render 一次表格
+    // 重新渲染表格
     $('.table_container').html('');
     renderJSON(thisJSON);
     jQueryDataTable(thisJSON);
