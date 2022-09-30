@@ -62,8 +62,6 @@ $(function () {
 
 // 用 ajax 接外部 json 檔案，先印出表格後套用 DataTable 樣式
 $.ajax({
-  dataType: 'json',
-  method: 'GET',
   url: 'assets/json/Backend.json',
   success: function (data) {
     // 用變數把資料傳出來

@@ -1,7 +1,5 @@
 // 用 ajax 接外部 json 檔案，取得後印出資料
 $.ajax({
-  dataType: 'json',
-  method: 'GET',
   url: 'assets/json/main.json',
   success: function (data) {
     renderJSON(data.news);
